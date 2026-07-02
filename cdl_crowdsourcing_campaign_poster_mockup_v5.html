@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CDL Crowdsourcing Campaign Poster Mock-Up</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900;1000&display=swap');
+
+    :root {
+      --teal: #007C7A;
+      --teal-dark: #006B69;
+      --purple: #5F3597;
+      --dark-purple: #3D236C;
+      --lavender: #F3DDF7;
+      --pale-teal: #EAF8F8;
+      --mint: #DFF4F2;
+      --ink: #34343A;
+      --muted: #5D6468;
+      --white: #FFFFFF;
+      --border: #C7E8E6;
+      --soft-purple-border: rgba(95, 53, 151, 0.20);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #eef7f7;
+      color: var(--ink);
+      font-family: "Nunito", "Aptos", "Avenir Next", Arial, sans-serif;
+    }
+
+    .poster {
+      width: min(1080px, 96vw);
+      aspect-ratio: 4 / 5;
+      background:
+        radial-gradient(circle at 88% 8%, rgba(243, 221, 247, 0.95), transparent 30%),
+        radial-gradient(circle at 8% 94%, rgba(211, 246, 241, 0.95), transparent 34%),
+        linear-gradient(135deg, #ffffff 0%, #f4fbfb 54%, #eefafa 100%);
+      border-radius: 34px;
+      padding: 56px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 28px 80px rgba(25, 70, 75, 0.18);
+    }
+
+    .poster::before {
+      content: "";
+      position: absolute;
+      inset: 28px;
+      border: 2px solid rgba(0, 124, 122, 0.14);
+      border-radius: 26px;
+      pointer-events: none;
+    }
+
+    .poster::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      right: -75px;
+      bottom: -75px;
+      background: radial-gradient(circle, rgba(95, 53, 151, 0.10), transparent 68%);
+      pointer-events: none;
+    }
+
+    .header,
+    .main,
+    .footer {
+      position: relative;
+      z-index: 2;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 32px;
+      margin-bottom: 34px;
+    }
+
+    .logo {
+      font-weight: 1000;
+      letter-spacing: -0.08em;
+      font-size: 78px;
+      line-height: 0.82;
+      background: linear-gradient(110deg, #7f3fa6 0%, #b681cc 24%, #00928f 52%, #57bdb8 73%, #f0b8e9 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tag {
+      padding: 13px 22px;
+      border-radius: 999px;
+      background: var(--white);
+      border: 2px solid var(--border);
+      color: var(--teal);
+      font-weight: 900;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      font-size: 17px;
+      box-shadow: 0 12px 28px rgba(0, 124, 122, 0.08);
+    }
+
+    .main {
+      display: grid;
+      grid-template-columns: 1.06fr 0.94fr;
+      gap: 38px;
+      align-items: stretch;
+    }
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .headline {
+      color: var(--dark-purple);
+      font-size: clamp(42px, 4.5vw, 58px);
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+      margin: 0 0 22px;
+      font-weight: 1000;
+      max-width: 560px;
+    }
+
+    .headline span {
+      color: var(--teal);
+    }
+
+    .subhead {
+      font-size: 24px;
+      line-height: 1.36;
+      margin: 0 0 28px;
+      color: var(--ink);
+      max-width: 650px;
+      font-weight: 800;
+    }
+
+    .benefits-panel {
+      background: rgba(255, 255, 255, 0.76);
+      border: 2px solid var(--border);
+      border-radius: 26px;
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: 0 12px 28px rgba(0, 124, 122, 0.06);
+    }
+
+    .benefits-panel h2 {
+      margin: 0 0 12px;
+      color: var(--purple);
+      font-size: 28px;
+      line-height: 1.12;
+      font-weight: 900;
+    }
+
+    .benefits-panel .intro {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 20px;
+      line-height: 1.42;
+      font-weight: 700;
+    }
+
+    .benefits-list {
+      display: grid;
+      gap: 15px;
+    }
+
+    .benefit {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 16px;
+      align-items: start;
+      padding: 16px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(234, 248, 248, 0.92), rgba(255, 255, 255, 0.84));
+      border: 1.8px solid rgba(199, 232, 230, 0.96);
+    }
+
+    .benefit-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: var(--teal);
+      box-shadow: 0 10px 20px rgba(0, 124, 122, 0.16);
+    }
+
+    .benefit-icon svg {
+      width: 30px;
+      height: 30px;
+      stroke: #ffffff;
+      fill: none;
+      stroke-width: 2.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .benefit h3 {
+      margin: 0 0 4px;
+      color: var(--dark-purple);
+      font-size: 21px;
+      line-height: 1.18;
+      font-weight: 900;
+    }
+
+    .benefit p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.34;
+      font-weight: 700;
+    }
+
+    .right-panel {
+      background: rgba(255, 255, 255, 0.86);
+      border: 2px solid rgba(95, 53, 151, 0.16);
+      border-radius: 32px;
+      padding: 34px;
+      box-shadow: 0 18px 44px rgba(69, 38, 113, 0.10);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .goal-box {
+      background: linear-gradient(135deg, var(--purple), #8b54c6);
+      border-radius: 28px;
+      color: white;
+      padding: 32px 30px;
+      text-align: center;
+      box-shadow: 0 18px 36px rgba(95, 53, 151, 0.22);
+    }
+
+    .goal-number {
+      font-size: 112px;
+      line-height: 0.82;
+      font-weight: 1000;
+      letter-spacing: -0.08em;
+      margin-bottom: 12px;
+    }
+
+    .goal-box h2 {
+      font-size: 30px;
+      line-height: 1.12;
+      margin: 0;
+      font-weight: 1000;
+    }
+
+    .donate-button {
+      display: block;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      background: var(--teal);
+      color: var(--white);
+      border-radius: 999px;
+      padding: 24px 28px;
+      font-size: 30px;
+      font-weight: 1000;
+      letter-spacing: 0.04em;
+      box-shadow: 0 18px 36px rgba(0, 124, 122, 0.22);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .donate-button:hover,
+    .donate-button:focus {
+      background: var(--teal-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 22px 42px rgba(0, 124, 122, 0.27);
+    }
+
+    .steps-card {
+      background: #fff8ff;
+      border: 2px dashed rgba(95, 53, 151, 0.28);
+      border-radius: 24px;
+      padding: 26px;
+    }
+
+    .steps-card h3 {
+      margin: 0 0 20px;
+      color: var(--dark-purple);
+      font-size: 26px;
+      line-height: 1.12;
+      font-weight: 900;
+    }
+
+    .steps {
+      display: grid;
+      gap: 18px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 16px;
+      align-items: start;
+      color: var(--ink);
+      font-size: 19px;
+      line-height: 1.34;
+      font-weight: 800;
+    }
+
+    .num {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--teal);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 1000;
+      font-size: 21px;
+      line-height: 1;
+      flex: 0 0 auto;
+    }
+
+    .footer {
+      position: absolute;
+      left: 56px;
+      right: 56px;
+      bottom: 38px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .social-section {
+      background: rgba(255, 255, 255, 0.84);
+      border: 2px solid rgba(0, 124, 122, 0.16);
+      border-radius: 24px;
+      padding: 22px;
+      margin-top: 2px;
+    }
+
+    .social-section h3 {
+      margin: 0 0 16px;
+      color: var(--dark-purple);
+      font-size: 23px;
+      line-height: 1.15;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .social-button {
+      min-height: 64px;
+      border-radius: 18px;
+      background: rgba(243, 221, 247, 0.56);
+      border: 1.8px solid rgba(95, 53, 151, 0.16);
+      display: grid;
+      place-items: center;
+    }
+
+    .social-button svg {
+      width: 34px;
+      height: 34px;
+      fill: var(--teal);
+      display: block;
+    }
+
+    .social-button.instagram svg {
+      fill: none;
+      stroke: var(--teal);
+      stroke-width: 2.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .social-button.tiktok svg {
+      fill: var(--teal);
+    }
+
+    @media (max-width: 850px) {
+      body {
+        display: block;
+        padding: 16px;
+      }
+
+      .poster {
+        width: 100%;
+        aspect-ratio: auto;
+        padding: 32px 24px 96px;
+      }
+
+      .header,
+      .main,
+      .footer {
+        display: block;
+      }
+
+      .logo {
+        font-size: 58px;
+        margin-bottom: 18px;
+      }
+
+      .tag {
+        display: inline-block;
+        font-size: 13px;
+      }
+
+      .headline {
+        font-size: 38px;
+      }
+
+      .subhead {
+        font-size: 20px;
+      }
+
+      .right-panel {
+        margin-top: 28px;
+      }
+
+      .goal-number {
+        font-size: 84px;
+      }
+
+      .donate-button {
+        font-size: 24px;
+      }
+
+      .social-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer {
+        left: 24px;
+        right: 24px;
+        bottom: 26px;
+        font-size: 15px;
+      }
+
+      .socials {
+        margin-top: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="poster" role="img" aria-label="CDL crowdsourcing campaign poster mock-up">
+    <section class="header">
+      <div class="logo" aria-label="CDL logo text">CDL</div>
+      <div class="tag">Crowdsourcing Campaign</div>
+    </section>
+
+    <section class="main">
+      <div class="left">
+        <h1 class="headline">Become one of <span>27</span> new monthly supporters by 2027.</h1>
+
+        <p class="subhead">
+          Help CDL keep support accessible for students with Learning Disabilities and their families, one monthly gift at a time.
+        </p>
+
+        <div class="benefits-panel">
+          <h2>Monthly donors help CDL plan ahead.</h2>
+          <p class="intro">
+            Consistent giving creates a more reliable base of support for programs, materials, workshops, and learner services between funding cycles.
+          </p>
+
+          <div class="benefits-list">
+            <div class="benefit">
+              <div class="benefit-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 19.5V5.8A2.8 2.8 0 0 1 6.8 3H20v16H6.8A2.8 2.8 0 0 0 4 21.8"/><path d="M8 7h8"/><path d="M8 11h6"/></svg>
+              </div>
+              <div>
+                <h3>Accessible programming</h3>
+                <p>Help keep academic and social programs available for families who rely on low-barrier support.</p>
+              </div>
+            </div>
+
+            <div class="benefit">
+              <div class="benefit-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M3.5 11.5 12 4l8.5 7.5"/><path d="M5.5 10.5V20h13v-9.5"/><path d="M9.5 20v-6h5v6"/></svg>
+              </div>
+              <div>
+                <h3>Stable support</h3>
+                <p>Give CDL steadier funding it can plan around beyond one-time campaigns and funding cycles.</p>
+              </div>
+            </div>
+
+            <div class="benefit">
+              <div class="benefit-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="7"/><path d="M9 3h6"/><path d="M12 6V3"/><path d="M12 13V9"/><path d="M12 13l3 2"/></svg>
+              </div>
+              <div>
+                <h3>Cumulative impact</h3>
+                <p>Small monthly gifts add up to meaningful annual support for learners and families.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="right-panel">
+        <div class="goal-box">
+          <div class="goal-number">27</div>
+          <h2>new monthly supporters for accessible learning</h2>
+        </div>
+
+        <a class="donate-button" href="https://diverselearners.ca/donate/" target="_blank" rel="noopener noreferrer">
+          DONATE NOW
+        </a>
+
+        <div class="steps-card">
+          <h3>How to help</h3>
+          <div class="steps">
+            <div class="step">
+              <div class="num">1</div>
+              <div>Register for monthly donations of any amount by clicking DONATE NOW.</div>
+            </div>
+            <div class="step">
+              <div class="num">2</div>
+              <div>If applicable, name the supporter who referred you to donate.</div>
+            </div>
+            <div class="step">
+              <div class="num">3</div>
+              <div>Share the campaign link with family, friends, colleagues and social media.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="social-section" aria-label="Recommended social media channels">
+          <h3>Follow CDL on social media</h3>
+          <div class="social-grid">
+            <div class="social-button facebook" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" role="img">
+                <path d="M14.25 8.4V6.95c0-.68.45-.84.77-.84h1.95V3h-2.69c-2.99 0-3.67 2.24-3.67 3.67V8.4H8.72v3.15h1.89V21h3.64v-9.45h2.45l.32-3.15h-2.77z"/>
+              </svg>
+            </div>
+            <div class="social-button instagram" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" role="img">
+                <rect x="4" y="4" width="16" height="16" rx="5"></rect>
+                <circle cx="12" cy="12" r="3.8"></circle>
+                <circle cx="17.1" cy="6.9" r="0.8" fill="var(--teal)" stroke="none"></circle>
+              </svg>
+            </div>
+            <div class="social-button linkedin" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" role="img">
+                <path d="M5.2 8.9h3.2V19H5.2V8.9zm1.6-4.9a1.85 1.85 0 1 1 0 3.7 1.85 1.85 0 0 1 0-3.7zm4.5 4.9h3.05v1.38h.04c.42-.8 1.47-1.65 3.02-1.65 3.23 0 3.83 2.13 3.83 4.9V19h-3.18v-4.86c0-1.16-.02-2.65-1.61-2.65-1.62 0-1.87 1.27-1.87 2.57V19h-3.28V8.9z"/>
+              </svg>
+            </div>
+            <div class="social-button tiktok" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" role="img">
+                <path d="M15.2 3c.34 2.2 1.58 3.76 3.8 3.9v3.2a7.2 7.2 0 0 1-3.72-1.07v5.72c0 3.03-2.04 5.25-5.18 5.25A5.08 5.08 0 0 1 5 14.92c0-3.05 2.25-5.17 5.3-5.17.42 0 .78.04 1.14.12v3.36a2.9 2.9 0 0 0-1.09-.22c-1.2 0-2.03.78-2.03 1.9 0 1.12.83 1.88 1.9 1.88 1.22 0 1.95-.72 1.95-2.25V3h3.03z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="footer">
+      <div>Centre for Diverse Learners</div>
+    </section>
+  </main>
+</body>
+</html>
